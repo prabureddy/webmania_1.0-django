@@ -1,0 +1,4 @@
+media/**/*.png
+media/**/*.jpg
+db.sqlite3
+*/__pycache__/

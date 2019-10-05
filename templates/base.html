@@ -1,0 +1,151 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Travel with Techy Sight | Shedule a Ride</title>
+  <link rel="icon" href="{% static 'logo/icon.png' %}" type="image/x-icon">
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,900" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+
+    body {
+      /* background-color: #f0f0f0; */
+      font-family: 'Roboto', sans-serif;
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    .side-nav li a {
+      text-decoration: none;
+    }
+
+    .right li a {
+      padding-right: 2em;
+      text-decoration: none
+    }
+  </style>
+  {% block style %}
+  {% endblock %}
+  {% block script %}
+  {% endblock %}
+</head>
+
+<body>
+  <div class="">
+    {% include 'Utility/NavBar.html' %}
+    <div class="row" style="margin-top:50px;">
+      {% block full_row %}
+      {% endblock %}
+    </div>
+
+    <div class="row">
+      <div class="col xl4 l4 m6 s12">
+        {% block left_content %}
+
+        {% endblock %}
+      </div>
+
+      <div class="col xl4 l4 m6 s12">
+        {% block center_content %}
+
+        {% endblock %}
+      </div>
+
+      <div class="col xl4 l4 m6 s12">
+        {% block right_content %}
+
+        {% endblock %}
+      </div>
+    </div>
+
+    <div class="fixed-action-btn horizontal click-to-toggle spin-close">
+      <a class="btn-floating btn-large transparent change-icon tooltipped" data-position="left" data-tooltip="Menu">
+        <i style="color:#f43f54;" class="material-icons">menu</i>
+      </a>
+      <ul>
+        <li><a data-position="left" data-tooltip="Shedule" class="btn-floating btn-large orange tooltipped" href="{% url 'home' %}"><i class="fas fa-plane-departure"></i></a></li>
+        <li><a data-position="left" data-tooltip="Testimonals" class="btn-floating btn-large blue tooltipped" href="{% url 'home' %}"><i class="far fa-handshake"></i></a></li>
+      </ul>
+    </div>
+  </div>
+
+
+  {% include 'Utility/Footer.html' %}
+
+
+
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="{% static 'js/highlight.pack.js' %}"></script>
+  <script>
+    hljs.initHighlightingOnLoad();
+  </script>
+  <script type="text/javascript">
+  $(document).ready(function(){
+    $('.slider').slider({
+
+    });
+  });
+    $(document).ready(function() {
+      $('.sidenav').sidenav();
+    });
+    $(document).ready(function() {
+      $(".dropdown-trigger").dropdown({
+        hover: true,
+        constrainWidth: false,
+      });
+    });
+    $(document).ready(function() {
+      $(".dropdown-trigger-mobile").dropdown();
+    });
+    $(document).ready(function() {
+      $('.collapsible').collapsible();
+    });
+    $('.carousel').carousel({
+      dist: 0,
+      padding: 0,
+      fullWidth: true,
+      indicators: true,
+      duration: 100,
+    });
+    autoplay();
+
+    function
+    autoplay() {
+      $('.carousel').carousel('next');
+      setTimeout(autoplay,
+        4500);
+    }
+    $(document).ready(function() {
+      $('.modal').modal();
+    });
+    $(document).ready(function() {
+      $('.tabs').tabs();
+      $("#registerbtn").click(function() {
+        $('ul.tabs').tabs('select',
+          'register');
+      });
+      $("#loginbtn").click(function() {
+        $('ul.tabs').tabs('select',
+          'login');
+      });
+    });
+    $(document).ready(function() {
+      $('.fixed-action-btn').floatingActionButton();
+    });
+    $(document).ready(function() {
+      $('.tooltipped').tooltip();
+    });
+    $(document).ready(function() {
+      $(".button-collapse").sideNav();
+    })
+  </script>
+</body>

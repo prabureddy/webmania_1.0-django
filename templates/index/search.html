@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block style %}
+<style>
+  input.search-field {
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.54);
+    border-radius: 20px;
+    border: 2px solid black;
+    height: 40px;
+    margin: 0 auto;
+    color: black;
+    width: 100%;
+    background: white;
+    font-size: 20px;
+    transition: background 0.2s, width .2s;
+  }
+
+  input.search-field:focus {
+    background-color: grey;
+    color: white;
+    outline: none;
+  }
+</style>
+{% endblock %}
+
+
+
+{% block full_row %}
+
+
+  <!-- <ul class="collapsible"> -->
+
+  {% if places %}
+  <div class="col xl6 l6 m12 s12">
+    <ul class="collapsible">
+      <li>
+        <div class="collapsible-header teal lighten-5"><span style="margin-left:10px;font-size:30px;">Amazing Places</span>
+        </div>
+        <div class="collapsible-body">
+          <ol>
+            <h5 class="center">Amazing Places</h5>
+            {% for i in places %}
+            <div class="row">
+              <div class="col s12">
+                <div class="card">
+                  <div class="card-image">
+                    <img class="responsive-img" src="{{ i.image.url }}">
+                    <span style="font-weight:bold;" class="card-title">{{ i.title|title }}</span>
+                  </div>
+                  <div class="card-content">
+                    <p>{{ i.description|slice:":100" }}...</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </ol>
+        </div>
+      </li>
+    </ul>
+  </div>
+  {% endif %}
+  {% if photos %}
+  <div class="col xl6 l6 m12 s12">
+    <ul class="collapsible">
+      <li>
+        <div class="collapsible-header teal lighten-5"><span style="margin-left:10px;font-size:30px;">Amazing Photos</span></div>
+        <div class="collapsible-body">
+          <ol>
+            <h5 class="center">Amazing Photos</h5>
+            {% for i in photos %}
+            <div class="row">
+              <div class="col s12">
+                <div class="card">
+                  <div class="card-image">
+                    <img class="responsive-img" src="{{ i.image.url }}">
+                    <span style="font-weight:bold;" class="card-title">{{ i.title|title }}</span>
+                  </div>
+                  <div class="card-content">
+                    <p>{{ i.description|slice:":100" }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </ol>
+        </div>
+      </li>
+    </ul>
+  </div>
+  {% endif %}
+{% endblock %}

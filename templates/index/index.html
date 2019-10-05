@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+
+{% block full_row %}
+{% if images %}
+<div class="slider" style="margin-top:40px;">
+  <ul class="slides">
+    {% for i in images %}
+    <li>
+      <img src="{{ i.image.url }}">
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+{% endif %}
+{% endblock %}
+
+
+{% block left_content %}
+{% if places %}
+<h5 class="center">Amazing Places</h5>
+{% for i in places %}
+<div class="row">
+  <div class="col s12">
+    <div class="card">
+      <div class="card-image">
+        <img class="responsive-img" src="{{ i.image.url }}">
+        <span style="font-weight:bold;" class="card-title">{{ i.title|title }}</span>
+      </div>
+      <div class="card-content">
+        <p>{{ i.description|slice:":100" }}...</p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}
+{% endif %}
+{% endblock %}
+
+{% block center_content %}
+{% if photos %}
+<h5 class="center">Amazing Photos</h5>
+{% for i in photos %}
+<div class="row">
+  <div class="col s12">
+    <div class="card">
+      <div class="card-image">
+        <img class="responsive-img" src="{{ i.image.url }}">
+        <span style="font-weight:bold;" class="card-title">{{ i.title|title }}</span>
+      </div>
+      <div class="card-content">
+        <p>{{ i.description|slice:":100" }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}
+{% endif %}
+{% endblock %}
+
+
+{% block right_content %}
+<h5 class="center">Schedule a ride today!</h5>
+<form method="POST" class="col center ">
+{{ form.errors }}
+<div class="row center">
+  <div class="input-field col xl12 l12  m12 s12 center">
+    {{ form.full_name }}
+    <label>Full Name *</label>
+  </div>
+</div>
+<div class="row center">
+  <div class="input-field  col xl6 l6 m6 s12 center">
+    {{ form.email }}
+    <label>Email *</label>
+  </div>
+
+  <div class="input-field  col xl6 l6 m6 s12 center">
+    {{ form.group_members }}
+    <label>How many People? *</label>
+  </div>
+
+</div>
+
+<div class="row">
+  <div class="input-field col xl12 l12 m12 s12 center">
+    {{ form.message }}
+    <label for="HiringReason">Questions or Special Requests</label>
+  </div>
+</div>
+{% csrf_token %}
+<button class="btn waves-effect waves-light white-text" type="submit" name="submit">Send
+  <i class="material-icons right">send</i>
+</button>
+</form>
+{% endblock %}

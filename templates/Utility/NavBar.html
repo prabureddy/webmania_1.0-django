@@ -1,0 +1,189 @@
+{% load staticfiles %}
+<style>
+  @media (min-width: 950px) and (max-width: 1200px) {
+    .fadeshow1 {
+      display: none;
+    }
+  }
+
+  ul.dropdown-content {
+    position: absolute;
+    top: -65px;
+  }
+
+  ul.dropdown-content li:hover {
+    background-color: #4db6ac;
+  }
+
+  ul.dropdown-content li a:hover {
+    color: white;
+  }
+
+  .dropdown-trigger {
+    outline: 0px;
+  }
+
+  ul.custom-style-top {
+    position: absolute;
+    top: -30px;
+  }
+
+  ul.custom-style-top li:hover {
+    background-color: #4db6ac;
+  }
+
+  ul.custom-style-top li a:hover {
+    color: white;
+  }
+
+
+  #search {
+    outline: none;
+    background-color: #2A2A3D;
+    width: 100%;
+    height: 38px;
+    border: none;
+    border-radius: 2px;
+    padding: 0 8px 0 45px;
+    margin-top: 12px;
+    color: white;
+    font-weight: 400;
+    font-size: 14px;
+  }
+
+  #search-form {
+    margin-left: 300px;
+    margin-top:30px;
+    min-width: auto;
+  }
+  .custom-down{
+    margin-top:20px;
+  }
+
+  .custom-down li a{
+    color: #2A2A3D;
+  }
+
+  .custom-down li a:hover{
+    background-color: #2A2A3D;
+    color: #e1e9ee;
+  }
+</style>
+
+<!-- Full screen options End here  -->
+<div class="navbar-fixed">
+  <nav style="background-color: #e1e9ee;height:100px;">
+    <!--Previous color -> class=" pink darken-3" -->
+    <div class="nav-wrapper">
+
+      <ul>
+        <li>
+          <a href="{% url 'home' %}" class="brand-logo"><img class="fadeshow1" src="{% static 'logo/logo.png' %}" style="margin-top:12px;margin-left: 20px; width:15rem"></a> <!-- Previous margin-top:-110px -->
+        </li>
+        <li>
+          <div class="search-div">
+            <form id='search-form' class="hide-on-med-and-down" onsubmit="if(document.getElementById('search').value.length !== 0){
+              if(document.getElementById('search').value !== ' '){
+                return true;
+              }else{
+                alert('Enter correct value');
+                return false;
+              }
+            }else{
+              alert('Enter correct value');
+              return false;
+            }" action="{% url 'search' %}" method="get">
+              <div class="input-field" style="max-width: 400pt;">
+                <input class="search-input" placeholder="Search" id="search" type="search" required name="q" value="{{ request.GET.q }}" />
+                <label onclick="if(document.getElementById('search').value.length !== 0){
+                  if(document.getElementById('search').value !== ' '){
+                    document.getElementById('search-form').submit();
+                  }else{
+                    alert('Enter correct value');
+                    return false;
+                  }
+                }else{
+                  alert('Enter correct value');
+                  return false;
+                }" id="search-link" style="margin-left:214px;background-color:white;height:38px;cursor:pointer;" class="label-icon right">
+                  <i id="search-icon" style="color:#4db6ac;margin-top:-12px;padding-right:10px;" class="material-icons right">search</i></label>
+              </div>
+            </form>
+          </div>
+        </li>
+      </ul>
+
+      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+
+      <ul class="right hide-on-med-and-down custom-down">
+
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <li><a href="{% url 'home' %}">About Us</a></li>
+        <li><a href="{% url 'home' %}">Shedule a Ride</a></li>
+        <li><a href="{% url 'home' %}">Testimonals</a></li>
+        <li><a href="{% url 'home' %}">Contact Us</a></li>
+      </ul>
+
+
+    </div>
+  </nav>
+</div>
+
+
+
+{% if programs %}
+<ul id="Programs2" class="dropdown-content">
+  {% for i in programs %}
+  <li><a href="{% url 'courses:courses' i.program_code %}">{{ i.program_title }}</a></li>
+  <li class="divider"></li>
+  {% endfor %}
+</ul>
+{% endif %}
+
+
+<ul class="sidenav" id="mobile-demo" style="width: 65%;">
+  <li>
+    <div class="user-view" style="height:100px;margin-top:20px;">
+      <div class="background">
+        <img class="responsive-img" src="{% static 'logo/logo.png' %}">
+      </div>
+    </div>
+  </li>
+  <li>
+    <div class="search-wrapper card input-field">
+      <form id='search-form-mobile' onsubmit="if(document.getElementById('search-mobile').value.length !== 0){
+          if(document.getElementById('search-mobile').value !== ' '){
+            return true;
+          }else{
+            alert('Enter correct value');
+            return false;
+          }
+        }else{
+          alert('Enter correct value');
+          return false;
+        }" action="{% url 'search' %}" method="get">
+        <div class="input-field" style="max-width: 400pt;">
+          <input class="search-input" placeholder="Search" id="search-mobile" type="search" required name="q" value="{{ request.GET.q }}" />
+          <label onclick="if(document.getElementById('search-mobile').value.length !== 0){
+              if(document.getElementById('search-mobile').value !== ' '){
+                document.getElementById('search-form-mobile').submit();
+              }else{
+                alert('Enter correct value');
+                return false;
+              }
+            }else{
+              alert('Enter correct value');
+              return false;
+            }" id="search-link" style="margin-left:150px;background-color:white;height:38px;cursor:pointer;" class="label-icon right">
+            <i id="search-icon" style="color:#4db6ac;margin-top:10px;" class="material-icons right">search</i></label>
+        </div>
+      </form>
+
+    </div>
+  </li>
+  <li><a href="{% url 'home' %}">Home</a></li>
+  <li><a href="{% url 'home' %}">About Us</a></li>
+  <li><a href="{% url 'home' %}">Shedule a Ride</a></li>
+  <li><a href="{% url 'home' %}">Testimonals</a></li>
+  <li><a href="{% url 'home' %}">Contact Us</a></li>
+</ul>
