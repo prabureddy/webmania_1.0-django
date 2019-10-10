@@ -55,7 +55,7 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = "Email Id"
 EMAIL_HOST_PASSWORD = "Password"
 ADMIN_EMAIL = [
-    'prabu0reddy777@gmail.com',
+    '**********************************',
 ]
 # Email configurations ends here
 
