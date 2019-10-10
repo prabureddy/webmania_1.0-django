@@ -114,9 +114,9 @@ WSGI_APPLICATION = 'webmania.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'webmania',
-        'USER': 'postgres',
-        'PASSWORD': 'Database@prabu7#',
+        'NAME': '**********',
+        'USER': '**********',
+        'PASSWORD': '******************',
         'HOST': 'localhost',
         'PORT': '5432',
     }
