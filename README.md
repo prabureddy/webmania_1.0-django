@@ -2,5 +2,5 @@
 Web Development Hackathon
 
 
-Go to Webmania and open settings and replace email and its password to send mail.
+Go to Webmania folder and open settings and replace email and its password to send mail.
 
